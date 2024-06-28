@@ -3,7 +3,7 @@ module.exports = {
       {
         name: "remix-app",
         script: "remix-serve",
-        args: "build/index.js",
+        args: "build/server/index.js",
         instances: 'max',
         exec_mode: 'cluster',
         autorestart: true,

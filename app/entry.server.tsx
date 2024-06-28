@@ -14,6 +14,13 @@ import { renderToPipeableStream } from "react-dom/server";
 
 const ABORT_DELAY = 5_000;
 
+process.on('unhandledRejection', function(err, promise) {
+  console.error('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
+});
+process.on('unhandledException', function(err, promise) {
+  console.error('Unhandled Exception (promise: ', promise, ', reason: ', err, ').');
+});
+
 export default function handleRequest(
   request: Request,
   responseStatusCode: number,
@@ -138,3 +145,4 @@ function handleBrowserRequest(
     setTimeout(abort, ABORT_DELAY);
   });
 }
+
